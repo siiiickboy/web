@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interfaz con imágenes y música</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('https://img.freepik.com/fotos-premium/girasoles-marco-palabras-girasoles-sobre-fondo-negro_662214-175591.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      transition: background 0.5s ease-in-out;
+    }
+
+    #contenedor {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 3px solid rgb(145, 42, 99);
+      padding: 20px;
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.3);
+      width: 80%;
+      max-width: 400px;
+    }
+
+    .boton {
+      display: block;
+      margin: 10px auto;
+      padding: 0px;
+      font-size: 0px;
+      cursor: pointer;
+      border: 2px solid rgb(128, 0, 128);
+      color: white;
+      background-color: purple;
+      border-radius: 10px;
+      transition: all 0.3s;
+      width: 65%;
+    }
+
+    .boton:hover {
+      box-shadow: 0 0 15px purple;
+    }
+
+    #boton1 img,
+    #boton2 img,
+    #boton3 img {
+      width: 100%;
+      height: auto;
+      border: 3px solid rgb(195, 0, 255);
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    #boton1 img:hover,
+    #boton2 img:hover,
+    #boton3 img:hover {
+      box-shadow: 0 0 20px yellow;
+    }
+
+    #imagenFondo, #imagenFondo2, #imagenFondo3 {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+    }
+
+    #imagenFondo {
+      background-image: url('https://i.postimg.cc/W1kFcLs5/2imagen-jpg.jpg');
+    }
+
+    #imagenFondo2 {
+      background-image: url('https://i.postimg.cc/0yHmLDh1/2-fondo-del-boton.jpg');
+    }
+
+    #imagenFondo3 {
+      background-image: url('https://i.postimg.cc/76gZJNRF/Imagen-de-Whats-App-2025-04-06-a-las-14-10-06-ca462ea9.jpg');
+    }
+
+    #mensajeCaja, #mensajeCaja2, #mensajeCaja3 {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: 2px solid white;
+      padding: 20px;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 600px;
+      text-align: center;
+      font-size: 22px;
+      z-index: 2;
+      overflow: hidden;
+      height: 200px;
+    }
+
+    #mensajeCaja3 a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    @keyframes scroll-text {
+      0% {
+        transform: translateY(50%);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100%);
+        opacity: 1;
+      }
+    }
+
+    #mensajeCaja p, #mensajeCaja2 p, #mensajeCaja3 p {
+      position: relative;
+      animation: scroll-text 40s linear forwards;
+      white-space: pre-line;
+    }
+
+    #botonRegresar {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: red;
+      color: white;
+      border: none;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    #mensajeBloqueado {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 20px;
+      z-index: 3;
+    }
+  </style>
+</head>
+<body>
+
+<iframe id="player" width="0" height="0"
+    src="https://www.youtube.com/embed/drXHzoUUTw8?enablejsapi=1&autoplay=1&loop=1&playlist=drXHzoUUTw8&mute=1"
+    frameborder="0" allow="autoplay"></iframe>
+
+<div id="contenedor">
+  <button id="boton1" class="boton">
+    <img src="https://i.postimg.cc/m2mV1Rs8/1imagen-jpg.jpg" alt="Botón Imagen 1">
+  </button>
+  <button id="boton2" class="boton">
+    <img src="https://i.postimg.cc/PJrYgyfh/imagen-del-boton.jpg" alt="Botón Imagen 2">
+  </button>
+  <button id="boton3" class="boton">
+    <img src="https://i.postimg.cc/25bPKKjW/Imagen-de-Whats-App-2025-04-13-a-las-15-38-27-95ef601b.jpg" alt="Botón Imagen 3">
+  </button>
+</div>
+
+<div id="imagenFondo"></div>
+<div id="mensajeCaja">
+  <p>"No te pido que confíes en mí al 100%, pero poco a poco te darás cuenta de que muero por ti, que solo quiero verte bien y hacerte feliz, hacerte reír siempre, estar contigo en tus peores momentos, celebrar cada escalón que des en tu vida, estar ahí a toda hora cuando más me necesites, y hacerte sentir que lo eres todo para mí... 💜💜MITCHELL💜💜"</p>
+</div>
+
+<div id="imagenFondo2"></div>
+<div id="mensajeCaja2">
+  <p>Si supieras cuántas veces el cielo me ha escuchado pronunciar tu nombre  
+entre oraciones secas y miradas vacías,  
+sabrías que no todo lo que arde se ve.  
+Desde que tus ojos se cruzaron con los míos,  
+algo se rompió sin hacer ruido,  
+como se rompe la última cuerda en un instrumento olvidado.  
+No he dejado de avanzar,  
+pero cada paso cruje como si cargara con nosotros a cuestas.  
+pero ahí es donde erradica la fuerza de nuestro amor.  
+en que no nos dejaremos sin importar los siglos que vengan  
+yo siempre te tenderé mi mano y tomaré la tuya.</p>
+</div>
+
+<div id="imagenFondo3"></div>
+<div id="mensajeCaja3">
+  <p><a href="https://youtu.be/bhjqRmMaI1g?si=MEUPdo7Om7x_l2lh" target="_blank">En el amor hay mucho sufrimiento y bondad, no existe el orgullo, el amor tolera todo, cree en todo, espera todo y soporta todo. El amor nunca fracasa, y esas 3 cosas perduran, fe, esperanza y amor, pero la más grandiosa es el Amor. da Click sobre este mensaje Te Amo💜💜"</a></p>
+
+
+</div>
+
+<div id="enlaceYouTube" style="
+  display: none;
+  position: absolute;
+  top: calc(50% + 220px); /* Ajusta esta distancia según la ubicación */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  color: yellow;
+  text-shadow: 1px 1px 3px black;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 10px;
+  z-index: 3; /* Esto garantiza que el enlace quede encima de la imagen de fondo */
+">
+  <a href="https://youtu.be/3fw8Dyo9a9I?si=T9jqAm2z-EZSjdUs" target="_blank" style="color: yellow; text-decoration: none;"> Dame click, dedicada para ti🎼</a>
+</div>
+
+<div id="mensajeBloqueado">Te amo PÍA hasta el final de mi vida.  Pd: Mitchell 💜💜💜💜</div>
+<button id="botonRegresar">Regresar</button>
+
+<script>
+  const boton1 = document.getElementById('boton1');
+  const boton2 = document.getElementById('boton2');
+  const boton3 = document.getElementById('boton3');
+  const regresar = document.getElementById('botonRegresar');
+  const fraseExtra = document.getElementById('fraseExtra');
+
+  boton1.addEventListener('click', function () {
+    document.getElementById('imagenFondo').style.display = 'block';
+    document.getElementById('contenedor').style.display = 'none';
+    regresar.style.display = 'block';
+    document.getElementById('mensajeCaja').style.display = 'block';
+  });
+
+  boton2.addEventListener('click', function () {
+    document.getElementById('imagenFondo2').style.display = 'block';
+    document.getElementById('contenedor').style.display = 'none';
+    regresar.style.display = 'block';
+    document.getElementById('mensajeCaja2').style.display = 'block';
+    document.getElementById('enlaceYouTube').style.display = 'block';
+  });
+
+  boton3.addEventListener('click', function () {
+    document.getElementById('imagenFondo3').style.display = 'block';
+    document.getElementById('contenedor').style.display = 'none';
+    regresar.style.display = 'block';
+    document.getElementById('mensajeCaja3').style.display = 'block';
+  });
+
+  regresar.addEventListener('click', function () {
+    document.getElementById('imagenFondo').style.display = 'none';
+    document.getElementById('imagenFondo2').style.display = 'none';
+    document.getElementById('imagenFondo3').style.display = 'none';
+    document.getElementById('mensajeCaja').style.display = 'none';
+    document.getElementById('mensajeCaja2').style.display = 'none';
+    document.getElementById('mensajeCaja3').style.display = 'none';
+    document.getElementById('contenedor').style.display = 'block';
+    regresar.style.display = 'none';
+    document.getElementById('enlaceYouTube').style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
